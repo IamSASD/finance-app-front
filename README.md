@@ -13,4 +13,4 @@ Proyecto para el ciclo 4 de Mision Tic 2022
 
 ### Preview del frontend usando Netlify
 
-[SEAN Finance App](https://seanfinanceapp.netlify.app/products)
+[SEAN Finance App](https://seanfinanceapp.netlify.app)
