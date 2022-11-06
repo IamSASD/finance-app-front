@@ -11,8 +11,8 @@ export const ProductCard = ( { type, name } ) => {
         <p className='card-labels'>Nombre:</p>
         <p className='card-text'>{ name }</p>
         <figure className='card-icons'>
-            <img src={ editIcon } alt="icono editar" />
-            <img src={ deleteIcon } alt="icono eliminar" />
+            <img src={ editIcon } alt="icono editar" title='Editar' />
+            <img src={ deleteIcon } alt="icono eliminar" title='Eliminar' />
         </figure>
     </div>
   )
