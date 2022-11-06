@@ -1,0 +1,90 @@
+.session-background{
+    background-image: url( '../assets/northfolk-Ok76F6yW2iA-unsplash.jpg' );
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.form-container{
+    min-height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.session-form {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 80%;
+    justify-content: center;
+    color: #16213E;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.session-title{
+    min-width: 100%;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.session-label{
+    min-width: 100%;
+    margin-bottom: 8px;
+}
+
+.session-input{
+    min-width: 100%;
+   margin-bottom: 15px;
+   border: none;
+   border-radius: 5px;
+   padding: 6px;
+}
+
+.session-submit{
+    background-color: #16213E;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 10px;
+    min-width: 40%;
+    display: block;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+
+.session-submit:hover{
+    background-color: #101830;
+}
+
+.session-redirect{
+    text-align: center;
+    width: 100%;
+    color: #000;
+}
+
+.session-redirect a{
+    text-decoration: none;
+    color: #16213E;
+}
+
+@media screen and (min-width: 600px) {
+    .session-form{
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .session-form{
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .session-form{
+        width: 30%;
+    }
+}

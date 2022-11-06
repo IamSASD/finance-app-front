@@ -1,0 +1,99 @@
+
+.hero {
+    height: 100vh;
+    background-image: url( '../assets/company-g6fe6d7db7_1920.jpg' );
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-container{
+    height: 100%;
+    padding: 2px;
+}
+
+.black-transparency{
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 30px;
+}
+
+.hero-title a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.hero-icons-container{
+    display: flex;
+    gap: 10px;
+}
+
+.hero-icons{
+    height: 30px;
+}
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    height: 80%;
+    justify-content: center;
+}
+
+.hero-content-text{
+    width: 80%;
+}
+
+.hero-text{
+    color: #fff;
+}
+
+.button-continer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-start{
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    background-color: #16213E;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+    text-decoration: none;
+}
+
+.button-start:hover{
+    background-color: #101830;
+}
+
+.hero-image-container {
+    width: 90%;
+    height: 70%;
+    margin: 0;
+}
+
+.hero-img{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 600px) {
+    .hero-content {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+}
