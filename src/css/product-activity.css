@@ -1,0 +1,48 @@
+:root{
+    --color-primary: #16213E;
+    --color-secundary: #121B32;
+    --color-third: #182747;
+}
+
+.nav{
+    background-color: var(--color-primary);
+}
+
+.nav-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-title{
+    font-size: 25px;
+}
+
+.nav-menu{
+    list-style: none;
+    display: flex;
+    height: 40px;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-img{
+    height: 38px;
+    width: 38px;
+}
+
+.nav-user{
+    height: 45px;
+    width: 45px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.nav-user-button{
+    position: relative;
+    cursor: pointer;
+}
+
+
+
+

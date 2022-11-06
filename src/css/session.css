@@ -60,6 +60,11 @@
     background-color: #101830;
 }
 
+.session-submit a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .session-redirect{
     text-align: center;
     width: 100%;

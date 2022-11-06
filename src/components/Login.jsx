@@ -26,15 +26,18 @@ export const Login = ({ type }) => {
                     
                     
                     <label className='session-label' htmlFor="mail">Correo</label>
-                    <input className='session-input' type="mail" id="mail" required placeholder='example@gmail.com' />
+                    <input className='session-input' type="email" id="mail" required placeholder='example@gmail.com' />
 
                     <label className='session-label' htmlFor="password">Contraseña</label>
                     <input className='session-input' type="password" id='password' required placeholder='example123' />
 
-                    <input className='session-input session-submit' type="submit" 
-                            value={ type == 'login' ? 'Iniciar' 
-                                    : type == 'register' ? 'Registrarse'
-                                    : '' } />
+                    <button className='session-input session-submit'>
+                        <Link to={ '/activity' }>
+                            { type == 'login' ? 'Iniciar' 
+                            : type == 'register' ? 'Registrarse'
+                            : '' }
+                        </Link>
+                    </button>
                     
                     <div className='session-redirect'>
                         <p>
