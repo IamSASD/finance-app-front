@@ -55,6 +55,7 @@
     padding: 10px;
     color: #fff;
     text-align: center;
+    margin-bottom: 8px;
 }
 
 /* Product Card */
@@ -64,6 +65,10 @@
     background-color: var(--color-secundary);
     padding: 10px;
     max-width: 400px;
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.75);
 }
 
 .card-labels{
@@ -78,6 +83,17 @@
 }
 
 /* Footer */
+.footer{
+    background-color: var(--color-primary);
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+}
+
+.footer-icons img{
+    height: 25px;
+}
 
 
 

@@ -1,6 +1,7 @@
 import { NavBar } from "./NavBar";
 import '../css/product-activity.css';
 import { ProductCard } from "./ProductCard";
+import { Footer } from "./Footer";
 
 export const Products = () => {
   return (
@@ -12,6 +13,7 @@ export const Products = () => {
             <ProductCard type="Tarjeta de Credito" name="Visa Bancolombia" />
           </div>
         </main>
+        <Footer />
     </>
   )
 }
