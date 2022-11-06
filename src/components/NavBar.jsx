@@ -15,12 +15,12 @@ export const NavBar = () => {
                 <h1 className='nav-title'>SEAN FINANCE APP</h1>
                 <ul className="nav-menu">
                     <li className='nav-element'>
-                        <NavLink title='Productos'>
+                        <NavLink title='Productos' to={ '/products' }>
                             <img className='nav-img' src={ card } alt="productos" />
                         </NavLink>
                     </li>
                     <li className='nav-element'>
-                        <NavLink title='Actividad'>
+                        <NavLink title='Actividad' to={ '/activity' }>
                             <img className='nav-img' src={ finance } alt="actividad" />
                         </NavLink>
                     </li> 

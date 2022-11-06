@@ -4,6 +4,8 @@
     --color-third: #182747;
 }
 
+/* NavBar Styles */
+
 .nav{
     background-color: var(--color-primary);
 }
@@ -42,6 +44,40 @@
     position: relative;
     cursor: pointer;
 }
+
+/* Body */
+.content{
+    background-color: var(--color-third);
+    height: 100vh;
+}
+
+.content-title{
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Product Card */
+.card{
+    color: #fff;
+    text-align: center;
+    background-color: var(--color-secundary);
+    padding: 10px;
+    max-width: 400px;
+}
+
+.card-labels{
+    font-weight: 600;
+}
+
+.card-icons img{
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* Footer */
 
 
 
