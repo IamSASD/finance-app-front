@@ -1,8 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../css/product-activity.css';
 import card from '../assets/icons/credit-card.svg';
 import finance from '../assets/icons/money-finance.svg';
 import user from '../assets/icons/user-svgrepo-com.svg'
+import add from '../assets/icons/add-svgrepo-com.svg'
 
 
 
@@ -13,6 +14,9 @@ export const NavBar = () => {
         <div className='container'>
             <nav className='nav-container'>
                 <h1 className='nav-title'>SEAN FINANCE APP</h1>
+                <figure className='add'>
+                    <img src={ add } alt="Agregar" />
+                </figure>
                 <ul className="nav-menu">
                     <li className='nav-element'>
                         <NavLink title='Productos' to={ '/products' }>
@@ -25,7 +29,9 @@ export const NavBar = () => {
                         </NavLink>
                     </li> 
                     <li className='nav-user'>
-                        <img className='nav-user-button' src={ user } alt="perfil" />
+                        <NavLink to={ '/user' }>
+                            <img className='nav-user-button' src={ user } alt="perfil" />
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

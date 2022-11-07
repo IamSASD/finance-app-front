@@ -1,0 +1,22 @@
+:root{
+    --color-table: #121C36;
+    --color-border: #000;
+}
+
+table{
+    border: 3px solid var(--color-border);
+    border-spacing: 0;
+    overflow-x: auto;
+    width: 100%;
+    background-color: var(--color-table);
+    border-radius: 5px;
+}
+
+th,
+td{
+    border: 2px solid var(--color-border);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+

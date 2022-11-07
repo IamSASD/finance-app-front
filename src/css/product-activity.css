@@ -13,11 +13,24 @@
 .nav-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .nav-title{
     font-size: 25px;
+}
+
+.add{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.add img{
+    height: 30px;
+    cursor: pointer;
 }
 
 .nav-menu{
@@ -82,6 +95,9 @@
     cursor: pointer;
 }
 
+/* Activity Page */
+
+
 /* Footer */
 .footer{
     background-color: var(--color-primary);
@@ -93,6 +109,16 @@
 
 .footer-icons img{
     height: 25px;
+}
+
+@media screen and ( min-width:500px ) {
+    .nav-container{
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .add{
+        width: auto;
+    }
 }
 
 

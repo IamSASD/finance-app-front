@@ -3,6 +3,7 @@ import { Activity } from "./Activity";
 import { Hero } from "./Hero";
 import { Login } from "./Login";
 import { Products } from "./Products";
+import { User } from "./User";
 
 export const FinanzasApp = () => {
 
@@ -14,6 +15,7 @@ export const FinanzasApp = () => {
                 <Route path="/register" element={ <Login type={ 'register' } /> } />
                 <Route path="/activity" element={ <Activity /> } />
                 <Route path="/products" element={ <Products /> } />
+                <Route path="/user" element={ <User /> } />
             </Routes>
         </BrowserRouter>
     );
