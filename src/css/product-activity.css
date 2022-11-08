@@ -64,13 +64,6 @@
     height: 100vh;
 }
 
-.content-title{
-    padding: 10px;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 8px;
-}
-
 /* Product Card */
 .card{
     color: #fff;
@@ -207,6 +200,12 @@
     font-weight: bold;
     padding: 15px;
     border-radius: 8px;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+
+.form-submit input:hover{
+    background-color: #0e172c;
 }
 
 /* Footer */
@@ -220,6 +219,7 @@
 
 .footer-icons img{
     height: 25px;
+    margin-left: 5px;
 }
 
 @media screen and ( min-width:500px ) {

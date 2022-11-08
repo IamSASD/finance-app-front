@@ -8,7 +8,7 @@ export const Activity = () => {
     <>
         <NavBar />
         <main className="content">
-          <h2 className="content-title">Mis Actividades</h2>
+          <h2 className="h2-title">Mis Actividades</h2>
           <div className="container">
             <Table />
             <FormPopUp 

@@ -8,7 +8,7 @@ export const Products = () => {
         <NavBar />
         <main className="content">
           <div className="container">
-            <h2 className="content-title">Mis Productos</h2>
+            <h2 className="h2-title">Mis Productos</h2>
             <ProductCard type="Tarjeta de Credito" name="Visa Bancolombia" />
             <FormPopUp 
               title='Agregar Producto' 

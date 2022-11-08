@@ -32,13 +32,13 @@ export const Login = ({ type }) => {
                     <label className='session-label' htmlFor="password">Contraseña</label>
                     <input className='session-input' type="password" id='password' required placeholder='example123' />
 
-                    <button className='session-input session-submit'>
-                        <Link to={ '/activity' }>
+                    <Link  to={ '/activity' }>
+                        <button className='session-submit'>
                             { type == 'login' ? 'Iniciar' 
                             : type == 'register' ? 'Registrarse'
                             : '' }
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
                     
                     <div className='session-redirect'>
                         <p>

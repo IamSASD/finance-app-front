@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../css/product-activity.css';
 import card from '../assets/icons/credit-card.svg';
 import finance from '../assets/icons/money-finance.svg';
@@ -7,7 +8,7 @@ import add from '../assets/icons/add-svgrepo-com.svg'
 
 
 
-export const NavBar = () => {
+export const NavBar = ({ component }) => {
 
     const showPopUp = () => {
         const popUp = document.querySelector( ".popUp-container" );
@@ -19,7 +20,7 @@ export const NavBar = () => {
         <div className='container'>
             <nav className='nav-container'>
                 <h1 className='nav-title'>SEAN FINANCE APP</h1>
-                <figure onClick={ showPopUp } className='add'>
+                <figure onClick={ showPopUp } className={ component == 'user' ? 'hide-input' : 'add' }>
                     <img src={ add } alt="Agregar" />
                 </figure>
                 <ul className="nav-menu">
@@ -44,4 +45,8 @@ export const NavBar = () => {
         </div>
     </div>
   )
+}
+
+NavBar.propTypes = {
+    component: PropTypes.string
 }
