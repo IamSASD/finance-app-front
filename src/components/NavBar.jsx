@@ -9,12 +9,17 @@ import add from '../assets/icons/add-svgrepo-com.svg'
 
 export const NavBar = () => {
 
+    const showPopUp = () => {
+        const popUp = document.querySelector( ".popUp-container" );
+        popUp.style.display = 'flex';
+    }
+
   return (
     <div className="nav">
         <div className='container'>
             <nav className='nav-container'>
                 <h1 className='nav-title'>SEAN FINANCE APP</h1>
-                <figure className='add'>
+                <figure onClick={ showPopUp } className='add'>
                     <img src={ add } alt="Agregar" />
                 </figure>
                 <ul className="nav-menu">

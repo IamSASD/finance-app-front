@@ -3,7 +3,8 @@ import '../css/table.css'
 export const Table = () => {
     
     return (
-        <table>
+        <div className='container table-container'>
+            <table>
             <thead>
                 <tr>
                     <th>Concepto</th>
@@ -21,5 +22,6 @@ export const Table = () => {
                 </tr>
             </tbody>
         </table>
+        </div>
     );
 }

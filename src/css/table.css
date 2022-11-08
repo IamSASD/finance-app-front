@@ -3,10 +3,14 @@
     --color-border: #000;
 }
 
+.table-container{
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 table{
     border: 3px solid var(--color-border);
     border-spacing: 0;
-    overflow-x: auto;
     width: 100%;
     background-color: var(--color-table);
     border-radius: 5px;

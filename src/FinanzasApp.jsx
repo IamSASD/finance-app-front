@@ -1,9 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Activity } from "./Activity";
-import { Hero } from "./Hero";
-import { Login } from "./Login";
-import { Products } from "./Products";
-import { User } from "./User";
+import { Activity, Hero, Login, Products, User } from "./pages";
+
 
 export const FinanzasApp = () => {
 

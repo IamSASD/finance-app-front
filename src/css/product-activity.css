@@ -95,8 +95,119 @@
     cursor: pointer;
 }
 
-/* Activity Page */
+/* PopUp Form */
+.popUp-container{
+    position: fixed;
+    background-color: rgba(0,0,0,0.75);
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
 
+.popUp-wrapper{
+    width: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.popUp-head{
+    background-color: var(--color-secundary);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+}
+
+.popUp-head-title{
+    justify-content: center;
+    width: 100%;
+}
+
+.popUp-head img{
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.popUp-title{
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+.popUp-form{
+    max-height: 80%;
+    min-width: 100%;
+    background-color: var(--color-third);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.popUp-field{
+    height: 80px;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.popUp-field input, select {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    padding: 5px;
+    background-color: var(--color-secundary);
+    caret-color: #fff;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.popUp-field select{
+    margin-top: 20px;
+}
+
+.popUp-label{
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.form-submit{
+    width: 100%;
+    padding: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-submit input{
+    background-color: var(--color-secundary);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+}
 
 /* Footer */
 .footer{
@@ -121,6 +232,28 @@
     }
 }
 
+@media screen and ( min-width:700px ) {
+    .popUp-field input, select{
+        width: 70%;
+        
+    }
+    .popUp-wrapper{
+        width: 60%;
+    }
+}
 
+@media screen and ( min-width:900px ) {
+    .popUp-wrapper{
+        width: 50%;
+    }
+    .popUp-form, 
+    .popUp-head{
+        width: 50%;
+    }
+    .popUp-field input, select{
+        width: 70%;
+        
+    }
+}
 
 

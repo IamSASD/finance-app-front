@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { HomeBar } from "./HomeBar";
+import { HomeBar } from '../components';
+
 import '../css/hero.css';
 import '../css/main.css';
 import '../css/session.css'
-import { Link } from 'react-router-dom';
 
 export const Login = ({ type }) => {
   return (

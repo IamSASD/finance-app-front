@@ -1,7 +1,6 @@
-import { NavBar } from "./NavBar";
+import { Footer, NavBar, ProductCard } from '../components';
+import { FormPopUp } from '../components/FormPopUp';
 import '../css/product-activity.css';
-import { ProductCard } from "./ProductCard";
-import { Footer } from "./Footer";
 
 export const Products = () => {
   return (
@@ -11,6 +10,13 @@ export const Products = () => {
           <div className="container">
             <h2 className="content-title">Mis Productos</h2>
             <ProductCard type="Tarjeta de Credito" name="Visa Bancolombia" />
+            <FormPopUp 
+              title='Agregar Producto' 
+              fields={[ 'Tipo', 'Nombre' ]}
+              fieldType={[ 'select', 'input' ]}
+              inputType={[ '', 'text' ]}
+              placeholder={[ '', 'Andres' ]}
+            />
           </div>
         </main>
         <Footer />

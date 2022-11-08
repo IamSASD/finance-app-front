@@ -2,7 +2,7 @@ import '../css/hero.css'
 import money from '../assets/money.svg';
 
 import { Link } from 'react-router-dom';
-import { HomeBar } from './HomeBar';
+import { HomeBar } from '../components/HomeBar';
 
 export const Hero = () => {
 
