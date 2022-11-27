@@ -15,9 +15,8 @@ export const FormPopUpProduct = ({ onProductsChange, submitMethod, cardId, form 
         id == 'producto' ? setProducto( value ) : '';
       }
 
+
     const hidePopUp = () => {
-        // const popUp = document.querySelector( '.popUp-container' );
-        // popUp.style.display = 'none';
         setTipo('');
         setProducto('');
         form(false);

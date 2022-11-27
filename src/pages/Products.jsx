@@ -10,7 +10,7 @@ export const Products = () => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [submitMethod, setSubmitMethod] = useState('post');
   const [cardId, setCardId] = useState('');
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
 
 
@@ -23,17 +23,20 @@ export const Products = () => {
   }, [])
 
   useEffect(() => {  
-    getProducts()
-    .then( res => {
-      setProducts(res);
-    })
+    if(isUpdate){
+      getProducts()
+      .then( res => {
+        setProducts(res);
+      })
+      return setIsUpdate(false)
+    }
   }, [isUpdate])
 
   return (
     <>
         <NavBar 
           onSubmitMethod={ (e) => setSubmitMethod(e) } 
-          form={ setShowForm }
+          form={ (e) => setShowForm(e) }
         />
         <main className="content">
           <div className="container">
@@ -50,19 +53,21 @@ export const Products = () => {
                                             onSubmitMethod={ (e) => setSubmitMethod(e) }
                                             submitMethod= {submitMethod}
                                             form={ setShowForm }
+                                            onProductsChange={ (e) => setIsUpdate(e) }
                                 />  )
               }
             </div>
-            {
-              showForm ? <FormPopUpProduct 
-                          onProductsChange={ setIsUpdate } 
-                          onSubmitMethod={ setSubmitMethod } 
-                          submitMethod={ submitMethod }
-                          cardId={ cardId } 
-                          form={ setShowForm }
-                        />
-                        : ''
-            }
+            <div>
+              {
+                showForm && <FormPopUpProduct 
+                            onProductsChange={ setIsUpdate } 
+                            onSubmitMethod={ setSubmitMethod } 
+                            submitMethod={ submitMethod }
+                            cardId={ cardId } 
+                            form={ setShowForm }
+                          />
+              }
+            </div>
           </div>
         </main>
         <Footer />

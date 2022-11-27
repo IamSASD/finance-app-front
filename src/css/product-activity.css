@@ -102,7 +102,7 @@
     background-color: rgba(0,0,0,0.75);
     height: 100%;
     width: 100%;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     top: 0;

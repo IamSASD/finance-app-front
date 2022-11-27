@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import editIcon from '../assets/icons/edit-svgrepo-com.svg'
 import deleteIcon from '../assets/icons/delete-svgrepo-com.svg'
+import { deleteProduct } from '../helpers/deleteProduct';
 
-export const ProductCard = ( { tipo, producto, _id, id, onSubmitMethod, form } ) => {
+export const ProductCard = ( { tipo, producto, _id, id, onSubmitMethod, form, onProductsChange } ) => {
 
   const onEdit = (e) => {
     const cardID = e.target.parentElement.parentElement.id;
-    const popUp = document.querySelector( ".popUp-container" );
-    popUp.style.display = 'flex';
     onSubmitMethod('put');
     id( cardID );
     form(true);
+  }
+
+  const onDelete = (e) => {
+    const cardID = e.target.parentElement.parentElement.id;
+    deleteProduct(cardID)
+      .then( res => onProductsChange(res) )
   }
 
   return (
@@ -27,7 +32,12 @@ export const ProductCard = ( { tipo, producto, _id, id, onSubmitMethod, form } )
               title='Editar' 
               onClick={ onEdit }
             />
-            <img src={ deleteIcon } alt="icono eliminar" title='Eliminar' />
+            <img 
+              src={ deleteIcon } 
+              alt="icono eliminar" 
+              title='Eliminar' 
+              onClick={ onDelete }
+            />
         </figure>
     </div>
   )
