@@ -1,22 +1,68 @@
+import { useEffect, useState } from 'react';
 import { Footer, NavBar, ProductCard } from '../components';
-import { FormPopUp } from '../components/FormPopUp';
+import  { FormPopUpProduct } from '../components/FormPopUpProduct';
 import '../css/product-activity.css';
+import { getProducts } from '../helpers/getProducts';
 
 export const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [isLoadin, setIsLoadin] = useState(true);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [submitMethod, setSubmitMethod] = useState('post');
+  const [cardId, setCardId] = useState('');
+  const [showForm, setShowForm] = useState(true);
+
+
+
+  useEffect(() => {  
+    getProducts()
+    .then( res => {
+      setProducts(res);
+      setIsLoadin(false);
+    })
+  }, [])
+
+  useEffect(() => {  
+    getProducts()
+    .then( res => {
+      setProducts(res);
+    })
+  }, [isUpdate])
+
   return (
     <>
-        <NavBar />
+        <NavBar 
+          onSubmitMethod={ (e) => setSubmitMethod(e) } 
+          form={ setShowForm }
+        />
         <main className="content">
           <div className="container">
             <h2 className="h2-title">Mis Productos</h2>
-            <ProductCard type="Tarjeta de Credito" name="Visa Bancolombia" />
-            <FormPopUp 
-              title='Agregar Producto' 
-              fields={[ 'Tipo', 'Nombre' ]}
-              fieldType={[ 'select', 'input' ]}
-              inputType={[ '', 'text' ]}
-              placeholder={[ '', 'Andres' ]}
-            />
+            {
+              isLoadin && <h2>Cargando...</h2>
+            }
+
+            <div className='card-container'>
+              {     
+                  products?.map( prod => <ProductCard 
+                                            key={prod._id} { ...prod } 
+                                            id={ setCardId }
+                                            onSubmitMethod={ (e) => setSubmitMethod(e) }
+                                            submitMethod= {submitMethod}
+                                            form={ setShowForm }
+                                />  )
+              }
+            </div>
+            {
+              showForm ? <FormPopUpProduct 
+                          onProductsChange={ setIsUpdate } 
+                          onSubmitMethod={ setSubmitMethod } 
+                          submitMethod={ submitMethod }
+                          cardId={ cardId } 
+                          form={ setShowForm }
+                        />
+                        : ''
+            }
           </div>
         </main>
         <Footer />

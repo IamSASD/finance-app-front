@@ -8,11 +8,13 @@ import add from '../assets/icons/add-svgrepo-com.svg'
 
 
 
-export const NavBar = ({ component }) => {
+export const NavBar = ({ component, onSubmitMethod, form }) => {
 
     const showPopUp = () => {
-        const popUp = document.querySelector( ".popUp-container" );
-        popUp.style.display = 'flex';
+        // const popUp = document.querySelector( ".popUp-container" );
+        // popUp.style.display = 'flex';
+        form(true);
+        onSubmitMethod('post')
     }
 
   return (

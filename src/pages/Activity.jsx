@@ -1,5 +1,5 @@
 import { Footer, NavBar, Table } from '../components';
-import { FormPopUp } from '../components/FormPopUp';
+import  { FormPopUpActivity } from '../components/FormPopUpActivity';
 import '../css/product-activity.css';
 
 
@@ -11,13 +11,7 @@ export const Activity = () => {
           <h2 className="h2-title">Mis Actividades</h2>
           <div className="container">
             <Table />
-            <FormPopUp 
-              title='Agregar Actividad'
-              fields={[ 'Concepto', 'Cantidad', 'Producto', 'Ingreso/Egreso' ]}
-              fieldType={[ '', '', 'select', '']}
-              inputType={[ 'text', 'number', '', 'number' ]}
-              placeholder={[ 'Pago de factura agua', '50000', '', '50000' ]}
-            />
+            <FormPopUpActivity />
           </div>
         </main>
         <Footer/>

@@ -1,9 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Footer, NavBar } from "../components"
 import '../css/product-activity.css'
 import '../css/user.css'
+import { fetchLogout } from "../helpers/fetchLogout"
 
 export const User = () => {
+
+  const onLogout = () => {
+    fetchLogout()
+    .then(res => isLogOut(res))
+  }
+
+  const navigate = useNavigate();
+  const isLogOut = (code) => {
+    code ? navigate('/') : '';
+  }
+
   return (
     <div>
         <NavBar component={ 'user' } />
@@ -21,9 +33,10 @@ export const User = () => {
                 <input type="email" disabled  placeholder="example@gmail.com"/>
               </form>
               <div className="button-container">
-                <Link to={ '/' }>
-                  <button className="close-session">Cerrar Sesion</button>
-                </Link>
+                <button 
+                  className="close-session"
+                  onClick={ onLogout }
+                >Cerrar Sesion</button>
               </div>
             </div>
           </div>

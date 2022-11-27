@@ -1,12 +1,40 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { HomeBar } from '../components';
 
 import '../css/hero.css';
 import '../css/main.css';
 import '../css/session.css'
+import { fetchLogin } from '../helpers/fetchLogin';
 
-export const Login = ({ type }) => {
+export const Login = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setpassword] = useState('');
+
+    const onInputChange = (e) => {
+        const { id, value } = e.target;
+        id == 'email' ? setEmail(value) : '';
+        id == 'password' ? setpassword(value) : '';
+    }
+
+    const onFormSumbit = (e) => {
+        e.preventDefault();
+        const body = {
+            email,
+            password
+        }
+        fetchLogin(body)
+        .then( res => isLogin(res) );
+    }
+
+    const navigate = useNavigate();
+    const isLogin = (code) => {
+        if(code == 2){
+            navigate('/products');
+        }
+    }
+
   return (
     <div className="session-background">
         <div className="black-transparency">
@@ -14,48 +42,40 @@ export const Login = ({ type }) => {
                 <HomeBar />
             </header>
             <div className="form-container">
-                <form className="session-form container">
+                <form onSubmit={ onFormSumbit } className="session-form container">
                     
                     <h2 className='session-title'>
-                        { type == 'login' ? 'Iniciar Sesion' 
-                        : type == 'register' ? 'Registro'
-                        : 'Finanzas App' }
+                        Iniciar Sesion
                     </h2>
-
-                    <label className={ type == 'login' ? 'hide-input' : 'session-label' } htmlFor="name">Nombre</label>
-                    <input className={ type == 'login' ? 'hide-input' : 'session-input' } type="text" id='name' required placeholder='Andres' />
-                    
                     
                     <label className='session-label' htmlFor="mail">Correo</label>
-                    <input className='session-input' type="email" id="mail" required placeholder='example@gmail.com' />
+                    <input 
+                        className='session-input' 
+                        type="email" 
+                        id="email" 
+                        onChange={ onInputChange }
+                        value={ email }
+                        required placeholder='example@gmail.com' />
 
                     <label className='session-label' htmlFor="password">Contraseña</label>
-                    <input className='session-input' type="password" id='password' required placeholder='example123' />
+                    <input 
+                        className='session-input' 
+                        type="password" 
+                        id='password'
+                        onChange={ onInputChange }
+                        value={ password }
+                        required placeholder='example123' />
 
-                    <Link  to={ '/activity' }>
-                        <button className='session-submit'>
-                            { type == 'login' ? 'Iniciar' 
-                            : type == 'register' ? 'Registrarse'
-                            : '' }
-                        </button>
-                    </Link>
+                    <button className='session-submit' type='submit'>
+                        Iniciar Sesion
+                    </button>
                     
                     <div className='session-redirect'>
                         <p>
-                            {
-                                type == 'login' ? '¿No tienes una cuenta?'
-                                : type == 'register' ? '¿Ya tienes una cuenta?'
-                                : ''
-                            }
+                            ¿No tienes una cuenta?
                         </p>
-                        <Link to={ type == 'login' ? '/register'
-                                : type == 'register' ? '/login'
-                                : '' }>
-                            {
-                                type == 'login' ? 'Registrarse'
-                                : type == 'register' ? 'Iniciar Sesion'
-                                : ''
-                            }
+                        <Link to={'/register'}>
+                            Crear una cuenta
                         </Link>
                     </div>
 
@@ -64,8 +84,4 @@ export const Login = ({ type }) => {
         </div>
     </div>
   )
-}
-
-Login.propTypes = {
-    type: PropTypes.string.isRequired
 }
