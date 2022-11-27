@@ -1,21 +1,27 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import close from '../assets/icons/cross-close-svgrepo-com.svg';
 import '../css/product-activity.css';
+import { getProducts } from '../helpers/getProducts';
+import { newActivity } from '../helpers/newActivity';
 
-export const FormPopUpActivity = () => {
+export const FormPopUpActivity = ({ form, onNewActivity }) => {
 
     const [concepto, setConcepto] = useState('');
     const [cantidad, setCantidad] = useState('');
+    const [products, setProducts] = useState([]);
+
+    useEffect( () => {
+        getProducts()
+            .then( res => {
+                setProducts(res);
+            } )
+    }, [] )
 
     const hidePopUp = () => {
-        const popUp = document.querySelector( '.popUp-container' );
-        document.querySelectorAll('select').forEach( el => el.value = 'DEFAULT' );
-        popUp.style.display = 'none';
         setConcepto('');
         setCantidad('');
+        form(false);
     }
-
 
     const onInputChange = (e) => {
         const { value, id } = e.target;
@@ -33,6 +39,9 @@ export const FormPopUpActivity = () => {
             producto,
             ingreso_egreso
         }
+        newActivity(body)
+            .then( res => onNewActivity(res) );
+        hidePopUp()
     }
 
   return (
@@ -79,8 +88,9 @@ export const FormPopUpActivity = () => {
                     >Producto</label>
                     <select defaultValue={ 'DEFAULT' } id='producto-actividad' onChange={ onInputChange }>
                         <option value={ 'DEFAULT' } disabled>--Selecciona una opcion--</option>
-                        <option value="Debito Bancolombia">Debito Bancolombia</option>
-                        <option value="Banco">Cuenta de Ahorros Davivienda</option>
+                        {
+                            products?.map( el => <option key={ el._id } value={ el.producto }>{ el.producto }</option>  )
+                        }
                     </select>
                 </div>
                 <div className="popUp-field">

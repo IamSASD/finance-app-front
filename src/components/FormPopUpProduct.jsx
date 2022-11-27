@@ -15,7 +15,6 @@ export const FormPopUpProduct = ({ onProductsChange, submitMethod, cardId, form 
         id == 'producto' ? setProducto( value ) : '';
       }
 
-
     const hidePopUp = () => {
         setTipo('');
         setProducto('');

@@ -11,6 +11,7 @@ export const Products = () => {
   const [submitMethod, setSubmitMethod] = useState('post');
   const [cardId, setCardId] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [inputValues, setInputValues] = useState([]);
 
 
 
@@ -37,6 +38,7 @@ export const Products = () => {
         <NavBar 
           onSubmitMethod={ (e) => setSubmitMethod(e) } 
           form={ (e) => setShowForm(e) }
+          component={ 'products' }
         />
         <main className="content">
           <div className="container">
@@ -61,10 +63,11 @@ export const Products = () => {
               {
                 showForm && <FormPopUpProduct 
                             onProductsChange={ setIsUpdate } 
-                            onSubmitMethod={ setSubmitMethod } 
+                            onSubmitMethod={ (e) => setSubmitMethod(e) } 
                             submitMethod={ submitMethod }
                             cardId={ cardId } 
                             form={ setShowForm }
+                            values={ inputValues }
                           />
               }
             </div>

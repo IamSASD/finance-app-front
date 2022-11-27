@@ -1,7 +1,7 @@
 import '../css/table.css'
 
-export const Table = () => {
-    
+export const Table = ({ data }) => {
+
     return (
         <div className='container table-container'>
             <table>
@@ -14,12 +14,20 @@ export const Table = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>example1</td>
-                    <td>example2</td>
-                    <td>example3</td>
-                    <td>example4</td>
-                </tr>
+                {
+                    data.map( ({ _id, 
+                                cantidad, 
+                                concepto, 
+                                ingreso_egreso, 
+                                producto,  }) => 
+                                        <tr key={ _id } id={_id}>
+                                            <td>{concepto}</td>
+                                            <td>{cantidad}</td>
+                                            <td>{producto}</td>
+                                            <td>{ingreso_egreso}</td>
+                                        </tr>
+                    )
+                }
             </tbody>
         </table>
         </div>

@@ -3,7 +3,7 @@ import editIcon from '../assets/icons/edit-svgrepo-com.svg'
 import deleteIcon from '../assets/icons/delete-svgrepo-com.svg'
 import { deleteProduct } from '../helpers/deleteProduct';
 
-export const ProductCard = ( { tipo, producto, _id, id, onSubmitMethod, form, onProductsChange } ) => {
+export const ProductCard = ( { tipo, producto, _id, id, onSubmitMethod, form, onProductsChange, values } ) => {
 
   const onEdit = (e) => {
     const cardID = e.target.parentElement.parentElement.id;
