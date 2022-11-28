@@ -1,22 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HomeBar } from '../components';
+import validator from 'validator';
 
 import '../css/hero.css';
 import '../css/main.css';
 import '../css/session.css'
 import { fetchLogin } from '../helpers/fetchLogin';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 export const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setpassword] = useState('');
+    const [showError, setShowError] = useState(false);
+    const [message, setMessage] = useState('');
 
     const onInputChange = (e) => {
         const { id, value } = e.target;
         id == 'email' ? setEmail(value) : '';
         id == 'password' ? setpassword(value) : '';
     }
+
+    useEffect( () => {
+        const inputEmail = document.getElementById('email');
+        email == '' ? inputEmail.style.border = 'none' : '';
+        if( validator.isEmail( email ) ){
+            inputEmail.style.border = 'none';
+        }else if( email != '' ){
+            inputEmail.style.border = '1px solid red';
+        }
+    }, [email] )
+
+    useEffect( () => {
+        const inputPassword = document.getElementById('password');
+        password == '' ? inputPassword.style.border = 'none' : '';
+        if( password.length >= 8 ){
+            inputPassword.style.border = 'none';
+        }else if(password != ''){
+            inputPassword.style.border = '1px solid red';
+        }
+    }, [password] )
 
     const onFormSumbit = (e) => {
         e.preventDefault();
@@ -25,7 +49,20 @@ export const Login = () => {
             password
         }
         fetchLogin(body)
-        .then( res => isLogin(res) );
+        .then( res => {
+            if(res == 2){
+                isLogin(res)
+            }else if( res == 401 ){
+                setShowError(true);
+                setMessage('El usuario no esta registrado');
+                document.getElementById('email').focus();
+                setInterval( () => {
+                    setShowError(false);
+                }, 5000 )
+            }
+        } )
+        setEmail('');
+        setpassword('');
     }
 
     const navigate = useNavigate();
@@ -42,6 +79,12 @@ export const Login = () => {
                 <HomeBar />
             </header>
             <div className="form-container">
+                {
+                    showError 
+                        && <ErrorMessage 
+                                message={ message }
+                            />
+                }
                 <form onSubmit={ onFormSumbit } className="session-form container">
                     
                     <h2 className='session-title'>
@@ -55,7 +98,10 @@ export const Login = () => {
                         id="email" 
                         onChange={ onInputChange }
                         value={ email }
-                        required placeholder='example@gmail.com' />
+                        required 
+                        placeholder='example@gmail.com' 
+                        autoFocus={true}
+                    />
 
                     <label className='session-label' htmlFor="password">Contraseña</label>
                     <input 

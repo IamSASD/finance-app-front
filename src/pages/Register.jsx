@@ -1,16 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HomeBar } from '../components';
+import validator from 'validator';
 
 import '../css/hero.css';
 import '../css/main.css';
 import '../css/session.css'
 import { fetchRegister } from '../helpers/fetchRegister';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 export const Register = () => {
     const [usuario, setUsuario] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showError, setShowError] = useState(false);
+    const [message, setMessage] = useState('');
+
+    useEffect( () => {
+        const inputEmail = document.getElementById('email');
+        email == '' ? inputEmail.style.border = 'none' : '';
+        if( validator.isEmail( email ) ){
+            inputEmail.style.border = 'none';
+        }else if( email != '' ){
+            inputEmail.style.border = '1px solid red';
+        }
+    }, [email] )
+
+    useEffect( () => {
+        const inputPassword = document.getElementById('password');
+        password == '' ? inputPassword.style.border = 'none' : '';
+        if( password.length >= 8 ){
+            inputPassword.style.border = 'none';
+        }else if(password != ''){
+            inputPassword.style.border = '1px solid red';
+        }
+    }, [password] )
 
     const onChangeInput = (e) => {
         const { id, value } = e.target;
@@ -28,7 +52,18 @@ export const Register = () => {
             password
         }
         const resForm = fetchRegister(formData);
-        resForm.then( res => isRegister(res) );
+        resForm.then( res => {
+            if(res == 2){
+                isRegister(res)
+            }else if(res == 0){
+                setMessage('El correo ya esta en uso');
+                setShowError(true)
+                document.getElementById('usuario').focus();
+                setInterval( () => {
+                    setShowError(false)
+                }, 5000 );
+            }
+        } );
         setUsuario('');
         setEmail('');
         setPassword('');
@@ -50,6 +85,12 @@ export const Register = () => {
                     <HomeBar />
                 </header>
                 <div className="form-container">
+                    {
+                        showError &&
+                            <ErrorMessage 
+                                message={ message }
+                            />
+                    }
                     <form 
                         className="session-form container" 
                         id='form-register'
@@ -69,6 +110,7 @@ export const Register = () => {
                             placeholder='Andres'
                             onChange={ onChangeInput }
                             value={usuario}
+                            autoFocus={true}
                         />
                         
                         

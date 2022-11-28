@@ -1,9 +1,10 @@
 import axios from "axios"
+import { BASE_URL } from "./config";
 
 export const useAuth = async() => {
     let isAuth;
     await axios({
-        url: 'http://localhost:3000/checkout',
+        url: `${ BASE_URL }/checkout`,
         withCredentials: true,
         method: 'POST'
     })

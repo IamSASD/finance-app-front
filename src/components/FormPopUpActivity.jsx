@@ -11,6 +11,7 @@ export const FormPopUpActivity = ({ form, onNewActivity }) => {
     const [products, setProducts] = useState([]);
 
     useEffect( () => {
+        document.getElementById('concepto').focus();
         getProducts()
             .then( res => {
                 setProducts(res);

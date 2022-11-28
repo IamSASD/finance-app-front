@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import close from '../assets/icons/cross-close-svgrepo-com.svg';
 import '../css/product-activity.css';
 import { newProduct } from '../helpers/newProduct';
 import { updateProduct } from '../helpers/updateProduct';
 
-export const FormPopUpProduct = ({ onProductsChange, submitMethod, cardId, form }) => {
+export const FormPopUpProduct = ({ onProductsChange, submitMethod, cardId, form, values }) => {
 
     const [tipo, setTipo] = useState('');
     const [producto, setProducto] = useState('');
+
+    useEffect(() => {
+        document.getElementById('tipo').focus();
+        if(submitMethod == 'put'){
+            setTipo(values[0]);
+            setProducto(values[1]);
+        }
+    }, [])
+    
 
     const onInputChange = (e) => {
         const { value, id } = e.target;
@@ -37,7 +46,7 @@ export const FormPopUpProduct = ({ onProductsChange, submitMethod, cardId, form 
             hidePopUp();
         }
     }
-
+    
   return (
     <div className="popUp-container">
         <div className="popUp-wrapper">

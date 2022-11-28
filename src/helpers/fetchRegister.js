@@ -1,11 +1,12 @@
 import axios from "axios"
+import { BASE_URL } from "./config";
 
 export const fetchRegister = async( body ) => {
-    let resCode = '';
-    await axios.post( 'http://localhost:3000/register', body )
+    let response = '';
+    await axios.post( `${ BASE_URL }/register`, body )
         .then( res => {
-            resCode = res.data.code;
+            response = res.data.code;
         } )
-        .catch( err => console.log(err) );
-    return resCode;
+        .catch( err => response = err );
+    return response;
 }

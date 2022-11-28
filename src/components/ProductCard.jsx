@@ -10,6 +10,9 @@ export const ProductCard = ( { tipo, producto, _id, id, onSubmitMethod, form, on
     onSubmitMethod('put');
     id( cardID );
     form(true);
+    const cardValues = []
+    document.querySelectorAll('.card-text').forEach( el => el.parentElement.id == cardID ? cardValues.push(el.innerText) : '' );
+    values(cardValues);
   }
 
   const onDelete = (e) => {

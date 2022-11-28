@@ -9,7 +9,8 @@ import { fetchLogout } from "../helpers/fetchLogout"
 
 export const User = () => {
 
-  const [userData, setUserData] = useState([])
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('');
 
   const onLogout = () => {
     fetchLogout()
@@ -22,16 +23,20 @@ export const User = () => {
   }
 
   useEffect( () => {
-    axios({
-      url: `${BASE_URL}/checkout`,
-      method: 'POST',
-      withCredentials: true
-    })
-    .then( res => {
-      setUserData(res.data.user);
-    } )
-    .catch( err => console.log(err) );
-    return;
+    const userData = async() => {
+      await axios({
+        url: `${BASE_URL}/checkout`,
+        method: 'POST',
+        withCredentials: true
+      })
+      .then( res => {
+        const { usuario, email } = res.data.user;
+        setUserEmail(email);
+        setUserName(usuario);
+      } )
+      .catch( err => console.log(err) );
+    }
+    userData()
   }, [] )
 
   return (
@@ -45,10 +50,10 @@ export const User = () => {
             <div className="form-container">
               <form className="user-form">
                 <label htmlFor="name">Nombre</label>
-                <input type="text" id="name" disabled placeholder="Andres" value={userData.usuario}/>
+                <input type="text" id="name" disabled placeholder="Andres" value={userName}/>
                 
                 <label htmlFor="mail">Correo</label>
-                <input type="email" disabled  placeholder="example@gmail.com" value={userData.email}/>
+                <input type="email" disabled  placeholder="example@gmail.com" value={userEmail}/>
               </form>
               <div className="button-container">
                 <button 

@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Footer, NavBar, ProductCard } from '../components';
 import  { FormPopUpProduct } from '../components/FormPopUpProduct';
+import { Loader } from '../components/Loader';
 import '../css/product-activity.css';
 import { getProducts } from '../helpers/getProducts';
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
-  const [isLoadin, setIsLoadin] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [isUpdate, setIsUpdate] = useState(false);
   const [submitMethod, setSubmitMethod] = useState('post');
   const [cardId, setCardId] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [inputValues, setInputValues] = useState([]);
+  const [inputValues, setInputValues] = useState(['']);
 
 
 
@@ -19,7 +20,7 @@ export const Products = () => {
     getProducts()
     .then( res => {
       setProducts(res);
-      setIsLoadin(false);
+      setIsLoading(false);
     })
   }, [])
 
@@ -44,7 +45,7 @@ export const Products = () => {
           <div className="container">
             <h2 className="h2-title">Mis Productos</h2>
             {
-              isLoadin && <h2>Cargando...</h2>
+              isLoading && <Loader />
             }
 
             <div className='card-container'>
@@ -56,6 +57,7 @@ export const Products = () => {
                                             submitMethod= {submitMethod}
                                             form={ setShowForm }
                                             onProductsChange={ (e) => setIsUpdate(e) }
+                                            values={ setInputValues }
                                 />  )
               }
             </div>

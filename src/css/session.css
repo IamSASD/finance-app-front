@@ -3,13 +3,14 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .form-container{
-    min-height: 80%;
+    max-height: 82%;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .session-form {
