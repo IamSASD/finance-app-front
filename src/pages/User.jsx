@@ -31,6 +31,7 @@ export const User = () => {
       setUserData(res.data.user);
     } )
     .catch( err => console.log(err) );
+    return;
   }, [] )
 
   return (

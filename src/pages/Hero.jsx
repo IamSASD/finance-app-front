@@ -17,7 +17,7 @@ export const Hero = () => {
                     <section className='hero-content'>
                         <div className='hero-content-text'>
                             <p className='hero-text'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda adipisci exercitationem cupiditate, nesciunt enim quas commodi blanditiis in. Accusamus voluptatem nisi nulla consequatur rem a dolorem veniam vitae blanditiis, error reiciendis temporibus atque sapiente amet rerum! Sint voluptatum excepturi consequuntur.
+                            ¿Cansado de no tener claros tus gastos mensaules? ¿no tienes claridad del flujo de tu dinero? No te preocupes, con SEAN Finance te ayudamos a tener el control de tus gastos e ingresos con un modelo deplicación seguro y facil de usar. Unete a la comunidad SEAN Finance y se el mejor administrador de tu bolsillo
                             </p>
                             <div className='button-continer'>
                                 <Link to={ '/login' } className='button-start'>Iniciar Ahora</Link>
