@@ -1,10 +1,15 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Footer, NavBar } from "../components"
 import '../css/product-activity.css'
 import '../css/user.css'
+import { BASE_URL } from "../helpers/config"
 import { fetchLogout } from "../helpers/fetchLogout"
 
 export const User = () => {
+
+  const [userData, setUserData] = useState([])
 
   const onLogout = () => {
     fetchLogout()
@@ -15,6 +20,18 @@ export const User = () => {
   const isLogOut = (code) => {
     code ? navigate('/') : '';
   }
+
+  useEffect( () => {
+    axios({
+      url: `${BASE_URL}/checkout`,
+      method: 'POST',
+      withCredentials: true
+    })
+    .then( res => {
+      setUserData(res.data.user);
+    } )
+    .catch( err => console.log(err) );
+  }, [] )
 
   return (
     <div>
@@ -27,10 +44,10 @@ export const User = () => {
             <div className="form-container">
               <form className="user-form">
                 <label htmlFor="name">Nombre</label>
-                <input type="text" id="name" disabled placeholder="Andres"/>
+                <input type="text" id="name" disabled placeholder="Andres" value={userData.usuario}/>
                 
                 <label htmlFor="mail">Correo</label>
-                <input type="email" disabled  placeholder="example@gmail.com"/>
+                <input type="email" disabled  placeholder="example@gmail.com" value={userData.email}/>
               </form>
               <div className="button-container">
                 <button 

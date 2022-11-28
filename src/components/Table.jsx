@@ -1,21 +1,34 @@
+import { useState } from 'react';
 import '../css/table.css'
 
-export const Table = ({ data }) => {
+export const Table = ({ data, heads, name }) => {
+
+    let ingreso = 0;
+    let egreso = 0;
+    const [ingresoEgreso, setIngresoEgreso] = useState([])
+
+    data.map( ({ cantidad, ingreso_egreso }) => {
+        if(ingreso_egreso == 'Ingreso'){
+            ingreso += cantidad;
+        }else if(ingreso_egreso == 'Egreso'){
+            egreso += cantidad;
+        }
+    } )
 
     return (
         <div className='container table-container'>
             <table>
             <thead>
                 <tr>
-                    <th>Concepto</th>
-                    <th>Cantidad</th>
-                    <th>Producto</th>
-                    <th>Ingreso/Egreso</th>
+                    {
+                        heads.map( name => <th key={name}>{name}</th> )
+                    }
                 </tr>
             </thead>
             <tbody>
                 {
-                    data.map( ({ _id, 
+                    name  == 'activities' ? 
+                            data.map( ({ _id, 
                                 cantidad, 
                                 concepto, 
                                 ingreso_egreso, 
@@ -26,7 +39,13 @@ export const Table = ({ data }) => {
                                             <td>{producto}</td>
                                             <td>{ingreso_egreso}</td>
                                         </tr>
-                    )
+                            )
+                    : name == 'totals' ?
+                            <tr>
+                                <td>{ ingreso }</td>
+                                <td>{ egreso }</td>
+                            </tr>
+                    : ''
                 }
             </tbody>
         </table>
