@@ -19,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    height: 80%;
+    min-height: 80%;
     justify-content: center;
     color: #16213E;
     font-weight: bold;
